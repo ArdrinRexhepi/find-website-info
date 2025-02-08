@@ -152,6 +152,7 @@ const defaultItemAnimationVariants: Record<
           y: { duration: 0.3 },
           opacity: { duration: 0.4 },
           filter: { duration: 0.3 },
+          delay,
         },
       }),
       exit: {
@@ -178,6 +179,7 @@ const defaultItemAnimationVariants: Record<
           y: { duration: 0.3 },
           opacity: { duration: 0.4 },
           filter: { duration: 0.3 },
+          delay,
         },
       }),
     },
@@ -304,7 +306,7 @@ export function TextAnimate({
   children,
   delay = 0,
   duration = 0.3,
-  variants,
+  // variants,
   className,
   segmentClassName,
   as: Component = "p",
@@ -360,13 +362,13 @@ export function TextAnimate({
     <AnimatePresence mode="popLayout">
       <MotionComponent
         variants={finalVariants.container}
+        duration={duration}
         initial="hidden"
         whileInView={startOnView ? "show" : undefined}
         animate={startOnView ? undefined : "show"}
         exit="exit"
         className={cn("whitespace-pre-wrap", className)}
-        {...props}
-      >
+        {...props}>
         {segments.map((segment, i) => (
           <motion.span
             key={`${by}-${segment}-${i}`}
@@ -374,9 +376,8 @@ export function TextAnimate({
             custom={i * staggerTimings[by]}
             className={cn(
               by === "line" ? "block" : "inline-block whitespace-pre",
-              segmentClassName,
-            )}
-          >
+              segmentClassName
+            )}>
             {segment}
           </motion.span>
         ))}

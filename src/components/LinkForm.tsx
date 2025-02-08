@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { ShimmerButton } from "./magicui/shimmer-button";
 import { useRouter } from "next/navigation";
-import { urlFixer } from "@/app/[...url]/page";
 
 export default function LinkForm() {
   const [url, setUrl] = useState("");
