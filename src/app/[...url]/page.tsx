@@ -8,7 +8,7 @@ interface IPageProps {
   url: string | string[] | undefined;
 }
 
-const urlFixer = (url: string[]) => {
+export const urlFixer = (url: string[]) => {
   return url.map((part) => decodeURIComponent(part)).join("/");
 };
 
@@ -46,7 +46,9 @@ const Page = async (props: { params: Promise<IPageProps> }) => {
   }
 
   return (
-    <ChatWrapper sessionId={sessionId} initialMessages={initialMessages} />
+    <div className="h-screen dark text-foreground bg-background">
+      <ChatWrapper sessionId={sessionId} initialMessages={initialMessages} />
+    </div>
   );
 };
 
