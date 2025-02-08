@@ -16,7 +16,9 @@ const Messages = ({ messages }: { messages: TMessage[] }) => {
       ) : (
         <div className="flex-1 flex flex-col justify-center items-center gap-2">
           <MessageSquare className="size-8 text-blue-500" />
-          <h3 className="font-semibold text-xl text-white">You're all set!</h3>
+          <h3 className="font-semibold text-xl text-white">
+            You&apos;re all set!
+          </h3>
           <p className="text-zinc-500 text-sm">
             Ask your first question to get started.
           </p>
