@@ -8,7 +8,7 @@ interface IPageProps {
   url: string | string[] | undefined;
 }
 
-export const urlFixer = (url: string[]) => {
+const urlFixer = (url: string[]) => {
   return url.map((part) => decodeURIComponent(part)).join("/");
 };
 
