@@ -363,6 +363,8 @@ export function TextAnimate({
       <MotionComponent
         variants={finalVariants.container}
         duration={duration}
+        delay={delay}
+        once={once}
         initial="hidden"
         whileInView={startOnView ? "show" : undefined}
         animate={startOnView ? undefined : "show"}
