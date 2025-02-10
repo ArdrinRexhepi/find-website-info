@@ -57,7 +57,8 @@ interface TextAnimateProps extends MotionProps {
   /**
    * Whether to animate only once
    */
-  once?: boolean;
+  //!showing error
+  // once?: boolean;
   /**
    * The animation preset to use
    */
@@ -311,7 +312,7 @@ export function TextAnimate({
   segmentClassName,
   as: Component = "p",
   startOnView = true,
-  once = false,
+  // once = false,
   by = "word",
   animation = "fadeIn",
   ...props
@@ -364,7 +365,7 @@ export function TextAnimate({
         variants={finalVariants.container}
         duration={duration}
         delay={delay}
-        once={once}
+        // once={once}
         initial="hidden"
         whileInView={startOnView ? "show" : undefined}
         animate={startOnView ? undefined : "show"}
