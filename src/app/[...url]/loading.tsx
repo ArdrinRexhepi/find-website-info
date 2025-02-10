@@ -38,7 +38,7 @@ const Loading = () => {
                       {item === "user" ? "You" : "Website"}
                     </span>
                   </div>
-                  <p className="text-sm font-normal py-2.5 dark:text-white text-gray-900">
+                  <div className="text-sm font-normal py-2.5 dark:text-white text-gray-900">
                     <div className="flex items-center space-x-2 mt-4 max-w-3xl">
                       <Skeleton className="h-4 w-[90%]" />
                       <Skeleton className="h-4 w-[90%]" />
@@ -47,7 +47,7 @@ const Loading = () => {
                       <Skeleton className="h-4 w-[90%]" />
                       <Skeleton className="h-4 w-[90%]" />
                     </div>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
