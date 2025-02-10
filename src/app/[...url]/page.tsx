@@ -1,4 +1,6 @@
 import ChatWrapper from "@/components/ChatWrapper";
+import InvalidUrl from "@/components/InvalidUrl";
+import { isValidUrl, urlFixer } from "@/lib/helpers";
 import { ragChat } from "@/lib/rag-chat";
 import { redis } from "@/lib/redis";
 import { cookies } from "next/headers";
@@ -8,19 +10,17 @@ interface IPageProps {
   url: string | string[] | undefined;
 }
 
-const urlFixer = (url: string[]) => {
-  return url.map((part) => decodeURIComponent(part)).join("/");
-};
-
 const Page = async (props: { params: Promise<IPageProps> }) => {
-  const sessionCookie = (await cookies()).get("sessionId")?.value;
   const params = await props.params;
-  console.log("params", params);
-
-  if (!params && params != undefined) return <>No url available</>;
+  const sessionCookie = (await cookies()).get("sessionId")?.value;
 
   //reconstructing url
   const fixedUrl = urlFixer(params.url as string[]);
+
+  //Check if url is valid
+  if (!isValidUrl(fixedUrl)) {
+    return <InvalidUrl />;
+  }
   //creating session id by merging url and session cookie
   // and replacing all the slashes so they don't cause issues
   const sessionId = (fixedUrl + "@@" + sessionCookie).replace(/\//g, "");
