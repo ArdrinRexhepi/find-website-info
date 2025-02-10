@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { ShimmerButton } from "./magicui/shimmer-button";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { isValidUrl } from "@/lib/helpers";
 
 export default function LinkForm() {
   const [url, setUrl] = useState("");
@@ -52,13 +53,4 @@ export default function LinkForm() {
       </ShimmerButton>
     </form>
   );
-}
-
-export function isValidUrl(url: string): boolean {
-  try {
-    new URL(url);
-    return true;
-  } catch (_) {
-    return false;
-  }
 }
